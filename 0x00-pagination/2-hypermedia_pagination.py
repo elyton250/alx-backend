@@ -42,11 +42,11 @@ class Server:
             (List[List]): a list of list(row) if inputs are within range
             ([]) : an empty list if page and page_size are out of range
         """
-        assert type(page) == int and type(page_size) == int
+        assert isinstance(page, int) and isinstance(page_size, int)
         assert page > 0 and page_size > 0
         startIndex, endIndex = self.index_range(page, page_size)
         return self.dataset()[startIndex:endIndex]
-    
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """Returns a dictionary of information"""
         indexes = self.index_range(page, page_size)
@@ -58,5 +58,5 @@ class Server:
             "prev_page": indexes[0],
             "total_pages": len(self.dataset()) // page_size
         }
-        
+
         return info
