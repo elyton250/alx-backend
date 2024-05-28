@@ -10,6 +10,7 @@ def get_locale():
     """this function get locales"""
     return request.accept_languages.best_match(Config().LANGUANGES)
 
+
 @app.route('/')
 def home():
     """returns an index"""
@@ -24,5 +25,3 @@ def home():
 # def home():
 #     """returns an index"""
 #     return render_template('2-index.html')
-
-
